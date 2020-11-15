@@ -2,10 +2,7 @@
 {% block content %}
 
 <section class="weather-form">
-    {# 
-        TODO: Replace the hard-coded city and date below with data from the 
-        server.
-    #}
+   
     <h1>Weather in {{city}}</h1>
     <p>on {{date}}</p>
 
@@ -14,8 +11,8 @@
     <ul>
         <li>Description:{{description}} </li>
         <li>Temperature:{{temp}}{{units_letter}}</li>
-        <!-- <li>Min: {{min_temp}}</li>
-        <li>Max: {{max_temp}}</li> -->
+        <li>Min: {{min_temp}}</li>
+        <li>Max: {{max_temp}}</li>
     </ul>
 
 

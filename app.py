@@ -75,10 +75,6 @@ def results():
     }
 
     result_json = requests.get(url, params=params).json()
-
-    pp.pprint(result_json)
-
-    
     context = {
         'date': datetime.now(),
         'city': city,
@@ -115,8 +111,7 @@ def get_lat_lon(city_name):
 @app.route('/historical_results')
 def historical_results():
     """Displays historical weather forecast for a given day."""
-    # TODO: Use 'request.args' to retrieve the city & units from the query
-    # parameters.
+  
     city = request.args.get('city')
     date = request.args.get('date')
     units = request.args.get('units')
@@ -127,10 +122,6 @@ def historical_results():
 
     url = 'http://api.openweathermap.org/data/2.5/onecall/timemachine'
     params = {
-        # TODO: Enter query parameters here for the 'appid' (your api key),
-        # latitude, longitude, units, & date (in seconds).
-        # See the documentation here (scroll down to "Historical weather data"):
-        # https://openweathermap.org/api/one-call-api
         'appid': API_KEY,
         'dt': date_in_seconds,
         'units':units,
@@ -141,14 +132,11 @@ def historical_results():
 
     result_json = requests.get(url, params=params).json()
 
-    # Uncomment the line below to see the results of the API call!
-    pp.pprint(result_json)
-
+    # pp.pprint(result_json)
     result_current = result_json['current']
     result_hourly = result_json['hourly']
 
-    # TODO: Replace the empty variables below with their appropriate values.
-    # You'll need to retrieve these from the 'result_current' object above.
+
     context = {
         'city': city,
         'date': date_obj,
