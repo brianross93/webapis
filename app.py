@@ -93,12 +93,20 @@ def results():
 
 def get_min_temp(results):
     """Returns the minimum temp for the given hourly weather objects."""
-    pass
+    temp_list = []
+    for i in results:
+        temp_list.append(i['temp'])
+    temp_min = min(temp_list)
+    return temp_min
     
 
 def get_max_temp(results):
     """Returns the maximum temp for the given hourly weather objects."""
-    pass
+    temp_list = []
+    for i in results:
+        temp_list.append(i['temp'])
+    temp_max = max(temp_list)
+    return temp_max
 
 def get_lat_lon(city_name):
     geolocator = Nominatim(user_agent='Weather Application')
@@ -132,7 +140,7 @@ def historical_results():
 
     result_json = requests.get(url, params=params).json()
 
-    # pp.pprint(result_json)
+    pp.pprint(result_json)
     result_current = result_json['current']
     result_hourly = result_json['hourly']
 
